@@ -1,0 +1,47 @@
+#dot{border-style: dotted;}
+#das{border-style: dashed;}
+#sol{border-style: solid;}
+#dob{border-style: double;}
+#gro{border-style: groove;}
+#rid{border-style: ridge;}
+#ins{border-style: inset;}
+#out{border-style: outset;}
+#non{border-style: none;}
+#hid{border-style: hidden;}
+#mix{border-style: ridge dashed solid double;}
+
+#ex{
+    font-size: 15px;
+    padding: 20px;
+    width: 100px;
+    height: 20px;
+    border: solid 4px rgb(0, 177, 74);
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
+    box-shadow: 10px 5px rgba(116, 255, 158, 0.418);
+}
+
+a{
+    display: block;
+    font-size: 20px;
+}
+p{
+    display: inline;
+}
+
+#d1{
+    background-color: aquamarine;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 100px;
+    left: 50px;
+}
+#d2{
+    background-color: darkgreen;
+    width: 20px;
+    height: 20px;
+    bottom:80%;
+    right: 0%;
+    position: absolute;
+}
