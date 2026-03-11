@@ -92,12 +92,12 @@ p{
 
     /*Introdução*/
 
-#indigo{
+#intro{
     text-align: center;
     color: indigo;
 }
 
-#indigo p{
+#intro p{
     font-family: serif;
     font-size: 20pt;
 }
