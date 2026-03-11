@@ -92,11 +92,14 @@ p{
 
     /*Introdução*/
 
-.indigo{
-    font-family: sans-serif;
-    font-size: 20pt;
+#indigo{
     text-align: center;
     color: indigo;
+}
+
+#indigo p{
+    font-family: serif;
+    font-size: 20pt;
 }
 
     /*Livrvos*/
