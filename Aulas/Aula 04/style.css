@@ -1,0 +1,15 @@
+.flexcontainer{
+    background-color:cornflowerblue;
+    display: flex;
+    /*flex-direction: row; 
+    flex-wrap: wrap;*/
+    flex-flow: row wrap;
+    justify-content: space-between 20px;
+    align-content: flex-end;
+}
+
+.flexcontainer div{
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
+}

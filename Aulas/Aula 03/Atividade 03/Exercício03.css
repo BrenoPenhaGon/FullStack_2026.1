@@ -176,6 +176,10 @@ th, td{
 
 }
 
+#consulta a{
+    padding-left: 90px;
+}
+
 #linkconsulta{
     color: darkred;
 }
