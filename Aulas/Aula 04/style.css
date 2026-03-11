@@ -1,15 +1,25 @@
 .flexcontainer{
     background-color:cornflowerblue;
+    height: 400px;
     display: flex;
     /*flex-direction: row; 
     flex-wrap: wrap;*/
     flex-flow: row wrap;
-    justify-content: space-between 20px;
-    align-content: flex-end;
+    justify-content: center;
+    align-content: space-between;
 }
 
 .flexcontainer div{
     background-color: white;
     margin: 20px;
     padding: 10px;
+}
+
+#d10{
+    order: 2;
+    flex-shrink: 2;
+}
+
+#d20{
+    flex-basis: 200px;
 }
