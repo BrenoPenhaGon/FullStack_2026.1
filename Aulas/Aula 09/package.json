@@ -1,0 +1,14 @@
+{
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "O meu primeiro projeto de servidor",
+  "main": "servidor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Breno Gonçalves",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
