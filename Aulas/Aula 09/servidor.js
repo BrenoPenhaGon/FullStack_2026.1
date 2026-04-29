@@ -9,6 +9,9 @@ app.use(express.static("./public"))
 app.use(bodyParser.urlencoded({extended: false }))
 app.use(bodyParser.json())
 
+app.set("view engine", "ejs")
+app.set("views","./views")
+
 
 var server = http.createServer(app)
 server.listen(80)
@@ -35,4 +38,21 @@ app.post("/inicio", function(req, res){
 
     console.log(text, number, color)
     console.log("Requisição feita por POST")
+})
+
+app.post("/cadastro", function(req,res){
+    var nome = req.body.nome;
+    var login = req.body.login;
+    var senha = req.body.senha;
+
+    console.log(nome, login, senha)
+    
+    res.render("resposta.ejs",
+        {resposta: "Usuário cadastrado com sucesso!"}
+    )
+})
+
+app.get("/for", function(req,res){
+    var qtde = req.query.qtde;
+    res.render("exemplo_for.ejs", {qtde})
 })
