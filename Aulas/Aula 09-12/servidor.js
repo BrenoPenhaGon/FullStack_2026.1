@@ -3,14 +3,15 @@ var http = require("http")
 var express = require("express")
 var bodyParser = require("body-parser")
 
+// ----------------------
 // MongoDB
+// ----------------------
 
 var mongodb = require("mongodb");
 
 const MongoClient = mongodb.MongoClient
-
-const uri = 'mongodb+srv://BrenoPenha:R9zduUEU5zJwVycG@fullstack2026.w5rmhri.mongodb.net/?appName=FullStack2026';
-
+// const uri = 'mongodb+srv://BrenoPenha:R9zduUEU5zJwVycG@fullstack2026.w5rmhri.mongodb.net/?appName=FullStack2026';
+const uri = "mongodb://localhost:27017"
 const client = new MongoClient(uri, { useNewUrlParser: true});
 
 var app = express()
@@ -67,7 +68,9 @@ app.get("/for", function(req,res){
     res.render("exemplo_for.ejs", {qtde})
 })
 
+// ----------------------
 // Banco de Dados
+// ----------------------
 
 var dbo = client.db("exemplo_db")
 var usuarios = dbo.collection("usuarios");
@@ -99,11 +102,44 @@ app.post("/logar_usuario", function(req, resp) {
     usuarios.find(data).toArray(function(err, items) {
       console.log(items);
       if (items.length == 0) {
+        resp.render('resposta_usuario.ejs', {resposta: "Usuário/senha não encontrado!"})
+      }else if (err) {
+        resp.render('resposta_usuario.ejs', {resposta: "Erro ao logar usuário!"})
+      }else {
+        resp.render('resposta_usuario.ejs', {resposta: "Usuário logado com sucesso!"})        
+      };
+    });
+
+  });
+
+app.post("/atualizar_usuario", function(req, resp) {
+    var data = { db_login: req.body.login, db_senha: req.body.senha };
+    var newData = { $set: {db_senha: req.body.novasenha} };
+
+    usuarios.updateOne(data, newData, function (err, result) {
+      console.log(result);
+      if (result.modifiedCount == 0) {
+        resp.render('resposta_usuario.ejs', {resposta: "Usuário/senha não encontrado!"})
+      }else if (err) {
+        resp.render('resposta_usuario.ejs', {resposta: "Erro ao atualizar usuário!"})
+      }else {
+        resp.render('resposta_usuario.ejs', {resposta: "Usuário atualizado com sucesso!"})        
+      };
+    });
+   
+  });
+
+app.post("/remover_usuario", function(req, resp) {
+    var data = { db_login: req.body.login, db_senha: req.body.senha };
+   
+    usuarios.deleteOne(data, function (err, result) {
+      console.log(result);
+      if (result.deletedCount == 0) {
         resp.render('resposta_usuario', {resposta: "Usuário/senha não encontrado!"})
       }else if (err) {
-        resp.render('resposta_usuario', {resposta: "Erro ao logar usuário!"})
+        resp.render('resposta_usuario', {resposta: "Erro ao remover usuário!"})
       }else {
-        resp.render('resposta_usuario', {resposta: "Usuário logado com sucesso!"})        
+        resp.render('resposta_usuario', {resposta: "Usuário removido com sucesso!"})        
       };
     });
 
